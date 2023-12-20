@@ -10,6 +10,7 @@
 		".": "./index.js"
 	},
 	"scripts": {
+		"lint": "eslint .",
 		"format": "prettier --write \"**/*.{js,json}\""
 	},
 	"devDependencies": {
@@ -23,6 +24,7 @@
 		"typescript": "^5.3.3"
 	},
 	"dependencies": {
+		"@eslint/js": "^8.56.0",
 		"@typescript-eslint/eslint-plugin": "^6.15.0",
 		"@typescript-eslint/parser": "^6.15.0",
 		"eslint-plugin-import": "^2.29.1",
@@ -30,7 +32,7 @@
 		"eslint-plugin-roblox-ts": "^0.0.36"
 	},
 	"prettier": {
-		"printWidth": 89,
+		"printWidth": 120,
 		"singleQuote": true,
 		"trailingComma": "all",
 		"useTabs": true

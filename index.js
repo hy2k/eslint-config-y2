@@ -62,7 +62,7 @@ export const tsConfig = {
 		// @ts-ignore
 		parser: typescriptParser,
 		parserOptions: {
-			project: `./tsconfig.json`,
+			project: `tsconfig.json`,
 			sourceType: 'module',
 		},
 	},
@@ -83,7 +83,7 @@ export const robloxConfig = {
 				jsx: true,
 			},
 			ecmaVersion: 'latest',
-			project: '**/plugin/tsconfig.json',
+			project: 'tsconfig.json',
 			sourceType: 'module',
 		},
 	},

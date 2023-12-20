@@ -3,7 +3,7 @@
 	"compilerOptions": {
 		"declaration": true,
 		"esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
+		"allowSyntheticDefaultImports": true,
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"sourceMap": false,
@@ -13,9 +13,9 @@
 
 		"strict": true,
 		"skipLibCheck": true,
-        "checkJs": true,
-        "noEmit": true,
+		"checkJs": true,
+		"noEmit": true,
 		"noImplicitAny": false,
-		"strictNullChecks":false 
+		"strictNullChecks": false
 	}
 }

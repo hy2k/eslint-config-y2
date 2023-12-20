@@ -1,26 +1,16 @@
-import {
-	baseConfig,
-	ignores,
-	importConfig,
-	perfConfig,
-	robloxConfig,
-	sortConfig,
-	testConfig,
-	tsConfig,
-} from './index.js';
-
-importConfig.files?.push('**/*.js');
+import { baseConfig, ignores, importConfig, sortConfig, tsConfig, tsOverrideRules } from './dist/index.js';
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
-// eslint-disable-next-line import/no-default-export
 export default [
 	//
 	ignores,
 	baseConfig,
-	tsConfig,
-	robloxConfig,
+
+	{
+		...tsConfig,
+		rules: tsOverrideRules,
+	},
+
 	importConfig,
-	testConfig,
 	sortConfig,
-	perfConfig,
 ];

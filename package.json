@@ -4,14 +4,17 @@
 	"type": "module",
 	"license": "MIT",
 	"files": [
-		"index.js"
+		"dist"
 	],
 	"exports": {
-		".": "./index.js"
+		".": "./dist/index.js"
 	},
 	"scripts": {
+		"build": "tsc",
 		"lint": "eslint .",
-		"format": "prettier --write \"**/*.{js,json}\""
+		"format": "prettier --write \"**/*.{js,json}\"",
+		"prepack": "npm run build",
+		"prepublishOnly": "npm run lint"
 	},
 	"devDependencies": {
 		"@types/eslint": "^8.56.0",

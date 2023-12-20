@@ -1,3 +1,5 @@
+import type { Linter } from 'eslint';
+
 import eslint from '@eslint/js';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
@@ -5,13 +7,14 @@ import importPlugin from 'eslint-plugin-import';
 import perfectionistPlugin from 'eslint-plugin-perfectionist';
 import robloxTsPlugin from 'eslint-plugin-roblox-ts';
 
-/** @type {import("eslint").Linter.FlatConfig} */
-export const ignores = {
+type FlatConfig = Linter.FlatConfig;
+type RulesRecord = Linter.RulesRecord;
+
+export const ignores: FlatConfig = {
 	ignores: ['**/node_modules/**', '**/dist/**', '**/out/**'],
 };
 
-/** @type {import("eslint").Linter.FlatConfig} */
-export const baseConfig = {
+export const baseConfig: FlatConfig = {
 	files: ['**/*'],
 	rules: {
 		...eslint.configs.recommended.rules,
@@ -24,16 +27,17 @@ export const baseConfig = {
 };
 
 // Disable rules that are incompatible with or better handled by TypeScript
-/** @type {import("eslint").Linter.RulesRecord} */
-export const tsOverrideRules = typescriptPlugin.configs['eslint-recommended'].overrides.reduce((acc, override) => {
-	return {
-		...acc,
-		...override.rules,
-	};
-}, {});
+export const tsOverrideRules: RulesRecord = typescriptPlugin.configs['eslint-recommended'].overrides.reduce(
+	(acc, override) => {
+		return {
+			...acc,
+			...override.rules,
+		};
+	},
+	{},
+);
 
-/** @type {import("eslint").Linter.RulesRecord} */
-export const tsRules = {
+export const tsRules: RulesRecord = {
 	...tsOverrideRules,
 	...typescriptPlugin.configs['recommended-type-checked'].rules,
 
@@ -62,8 +66,7 @@ export const tsRules = {
 	'no-unused-vars': 'off',
 };
 
-/** @type {import("eslint").Linter.FlatConfig} */
-export const tsConfig = {
+export const tsConfig: FlatConfig = {
 	files: ['**/*.ts'],
 	languageOptions: {
 		// @ts-ignore
@@ -80,8 +83,7 @@ export const tsConfig = {
 	rules: tsRules,
 };
 
-/** @type {import("eslint").Linter.FlatConfig} */
-export const robloxConfig = {
+export const robloxConfig: FlatConfig = {
 	files: ['**/*.ts'],
 	ignores: ['**/out/**'],
 	languageOptions: {
@@ -113,8 +115,7 @@ export const robloxConfig = {
 	},
 };
 
-/** @type {import("eslint").Linter.FlatConfig} */
-export const importConfig = {
+export const importConfig: FlatConfig = {
 	files: ['**/*.ts'],
 	plugins: {
 		import: importPlugin,
@@ -128,8 +129,7 @@ export const importConfig = {
 	},
 };
 
-/** @type {import("eslint").Linter.FlatConfig} */
-export const testConfig = {
+export const testConfig: FlatConfig = {
 	files: ['**/*.test.*', '**/*.spec.*'],
 	rules: {
 		'@typescript-eslint/unbound-method': 'off',
@@ -137,9 +137,8 @@ export const testConfig = {
 	},
 };
 
-/** @type {import("eslint").Linter.FlatConfig} */
 // Ref: https://typescript-eslint.io/linting/troubleshooting/performance-troubleshooting
-export const perfConfig = {
+export const perfConfig: FlatConfig = {
 	files: ['**/*'],
 	rules: {
 		'@typescript-eslint/indent': 'off',
@@ -155,8 +154,7 @@ export const perfConfig = {
 	},
 };
 
-/** @type {import("eslint").Linter.FlatConfig} */
-export const sortConfig = {
+export const sortConfig: FlatConfig = {
 	files: ['**/*'],
 	plugins: {
 		perfectionist: perfectionistPlugin,

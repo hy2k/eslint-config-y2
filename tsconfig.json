@@ -1,5 +1,6 @@
 {
 	"exclude": ["node_modules", "dist"],
+	"include": ["src"],
 	"compilerOptions": {
 		"declaration": true,
 		"esModuleInterop": true,
@@ -10,11 +11,11 @@
 		"target": "ES2022",
 		"lib": ["ES2022"],
 		"types": ["node"],
+		"outDir": "dist",
 
 		"strict": true,
 		"skipLibCheck": true,
 		"checkJs": true,
-		"noEmit": true,
 		"noImplicitAny": false,
 		"strictNullChecks": false
 	}

@@ -1,0 +1,38 @@
+{
+	"name": "eslint-config-y2",
+	"version": "0.0.1",
+	"type": "module",
+	"license": "MIT",
+	"files": [
+		"index.js"
+	],
+	"exports": {
+		".": "./index.js"
+	},
+	"scripts": {
+		"format": "prettier --write \"**/*.{js,json}\""
+	},
+	"devDependencies": {
+		"@types/eslint": "^8.56.0",
+		"@types/node": "^20.10.5",
+		"eslint": "^8.56.0",
+		"prettier": "^3.1.1"
+	},
+	"peerDependencies": {
+		"eslint": "^8.56.0",
+		"typescript": "^5.3.3"
+	},
+	"dependencies": {
+		"@typescript-eslint/eslint-plugin": "^6.15.0",
+		"@typescript-eslint/parser": "^6.15.0",
+		"eslint-plugin-import": "^2.29.1",
+		"eslint-plugin-perfectionist": "^2.5.0",
+		"eslint-plugin-roblox-ts": "^0.0.36"
+	},
+	"prettier": {
+		"printWidth": 89,
+		"singleQuote": true,
+		"trailingComma": "all",
+		"useTabs": true
+	}
+}

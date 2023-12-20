@@ -23,8 +23,18 @@ export const baseConfig = {
 	},
 };
 
+// Disable rules that are incompatible with or better handled by TypeScript
+/** @type {import("eslint").Linter.RulesRecord} */
+export const tsOverrideRules = typescriptPlugin.configs['eslint-recommended'].overrides.reduce((acc, override) => {
+	return {
+		...acc,
+		...override.rules,
+	};
+}, {});
+
 /** @type {import("eslint").Linter.RulesRecord} */
 export const tsRules = {
+	...tsOverrideRules,
 	...typescriptPlugin.configs['recommended-type-checked'].rules,
 
 	'@typescript-eslint/consistent-indexed-object-style': ['warn', 'index-signature'],
@@ -50,9 +60,6 @@ export const tsRules = {
 
 	'no-shadow': 'off',
 	'no-unused-vars': 'off',
-
-	// Disable rules that are incompatible with or better handled by TypeScript
-	...typescriptPlugin.configs['eslint-recommended'].overrides[0].rules,
 };
 
 /** @type {import("eslint").Linter.FlatConfig} */

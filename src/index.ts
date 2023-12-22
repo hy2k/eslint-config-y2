@@ -39,7 +39,7 @@ export const tsOverrideRules: RulesRecord = typescriptPlugin.configs['eslint-rec
 
 export const tsRules: RulesRecord = {
 	...tsOverrideRules,
-	...typescriptPlugin.configs['recommended-type-checked'].rules,
+	...typescriptPlugin.configs['strict-type-checked'].rules,
 
 	'@typescript-eslint/consistent-indexed-object-style': ['warn', 'index-signature'],
 	'@typescript-eslint/consistent-type-imports': [

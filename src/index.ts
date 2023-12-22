@@ -87,6 +87,8 @@ export const robloxConfig: FlatConfig = {
 	files: ['**/*.ts'],
 	ignores: ['**/out/**'],
 	languageOptions: {
+		// @ts-ignore
+		parser: typescriptParser,
 		parserOptions: {
 			ecmaFeatures: {
 				jsx: true,

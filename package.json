@@ -13,7 +13,7 @@
 	"scripts": {
 		"build": "tsc",
 		"lint": "eslint .",
-		"format": "prettier --write \"**/*.{js,json}\"",
+		"format": "prettier --write \"**/*.{ts,js,json}\"",
 		"prepack": "npm run build",
 		"prepublishOnly": "npm run lint"
 	},

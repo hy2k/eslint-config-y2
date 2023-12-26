@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    target-branch: "main"
+    versioning-strategy: "widen"
+    open-pull-requests-limit: 3
+    allow:
+      - dependency-type: "production"
+        dependency-name: "*"

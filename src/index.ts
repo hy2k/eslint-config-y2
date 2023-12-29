@@ -5,6 +5,7 @@ import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import importPlugin from 'eslint-plugin-import';
 import perfectionistPlugin from 'eslint-plugin-perfectionist';
+import reactHookPlugin from 'eslint-plugin-react-hooks';
 import robloxTsPlugin from 'eslint-plugin-roblox-ts';
 
 type FlatConfig = Linter.FlatConfig;
@@ -66,36 +67,40 @@ export const tsRules: RulesRecord = {
 	'no-unused-vars': 'off',
 };
 
+const defaultParserOptions: Linter.ParserOptions = {
+	ecmaFeatures: {
+		jsx: true,
+	},
+	project: `tsconfig.json`,
+	sourceType: 'module',
+};
+
 export const tsConfig: FlatConfig = {
-	files: ['**/*.ts'],
+	files: ['**/*.{ts,tsx}'],
 	languageOptions: {
 		// @ts-ignore
 		parser: typescriptParser,
 		parserOptions: {
-			project: `tsconfig.json`,
-			sourceType: 'module',
+			...defaultParserOptions,
 		},
 	},
 	plugins: {
 		// @ts-ignore
 		'@typescript-eslint': typescriptPlugin,
 	},
-	rules: tsRules,
+	rules: {
+		...tsRules,
+	},
 };
 
 export const robloxConfig: FlatConfig = {
-	files: ['**/*.ts'],
+	files: ['**/*.{ts,tsx}'],
 	ignores: ['**/out/**'],
 	languageOptions: {
 		// @ts-ignore
 		parser: typescriptParser,
 		parserOptions: {
-			ecmaFeatures: {
-				jsx: true,
-			},
-			ecmaVersion: 'latest',
-			project: 'tsconfig.json',
-			sourceType: 'module',
+			...defaultParserOptions,
 		},
 	},
 	plugins: {
@@ -117,8 +122,34 @@ export const robloxConfig: FlatConfig = {
 	},
 };
 
+export const tsOverridesConfig: FlatConfig = {
+	files: ['**/*.{ts,tsx}'],
+	rules: {
+		...tsOverrideRules,
+	},
+};
+
+export const jsxConfig: FlatConfig = {
+	// Assume custom React-hooks modules use .ts extension to prevent false positive for
+	// Matter-hooks.
+	files: ['**/*.tsx'],
+	languageOptions: {
+		// @ts-ignore
+		parser: typescriptParser,
+		parserOptions: {
+			...defaultParserOptions,
+		},
+	},
+	plugins: {
+		'react-hooks': reactHookPlugin,
+	},
+	rules: {
+		...reactHookPlugin.configs.recommended.rules,
+	},
+};
+
 export const importConfig: FlatConfig = {
-	files: ['**/*.ts'],
+	files: ['**/*.{ts,tsx}'],
 	plugins: {
 		import: importPlugin,
 	},

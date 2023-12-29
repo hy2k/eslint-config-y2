@@ -1,4 +1,7 @@
-import { baseConfig, ignoresConfig, importConfig, sortConfig, tsConfig, tsOverrideRules } from './dist/index.js';
+import { baseConfig, ignoresConfig, importConfig, sortConfig, tsConfig } from './dist/index.js';
+
+// Ignore untyped plugins
+tsConfig.rules = {};
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
@@ -6,10 +9,7 @@ export default [
 	ignoresConfig,
 	baseConfig,
 
-	{
-		...tsConfig,
-		rules: tsOverrideRules,
-	},
+	tsConfig,
 
 	importConfig,
 	sortConfig,

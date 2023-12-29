@@ -11,7 +11,7 @@ import robloxTsPlugin from 'eslint-plugin-roblox-ts';
 type FlatConfig = Linter.FlatConfig;
 type RulesRecord = Linter.RulesRecord;
 
-export const ignores: FlatConfig = {
+export const ignoresConfig: FlatConfig = {
 	ignores: ['**/node_modules/**', '**/dist/**', '**/out/**'],
 };
 
@@ -129,7 +129,7 @@ export const tsOverridesConfig: FlatConfig = {
 	},
 };
 
-export const jsxConfig: FlatConfig = {
+export const reactConfig: FlatConfig = {
 	// Assume custom React-hooks modules use .ts extension to prevent false positive for
 	// Matter-hooks.
 	files: ['**/*.tsx'],

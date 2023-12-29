@@ -11,12 +11,20 @@ npm i -D eslint-config-y2
 ### Example
 
 ```js
-import { baseConfig, ignores, importConfig, perfConfig, sortConfig, testConfig, tsConfig } from 'eslint-config-y2';
+import {
+	baseConfig,
+	ignoresConfig,
+	importConfig,
+	perfConfig,
+	sortConfig,
+	testConfig,
+	tsConfig,
+} from 'eslint-config-y2';
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
-	//
-	ignores,
+	// prettier-ignore
+	ignoresConfig,
 	baseConfig,
 	tsConfig,
 	importConfig,
@@ -31,10 +39,10 @@ export default [
 ```ts
 import {
 	baseConfig,
-	ignores,
+	ignoresConfig,
 	importConfig,
-	jsxConfig,
 	perfConfig,
+	reactConfig,
 	robloxConfig,
 	sortConfig,
 	testConfig,
@@ -53,16 +61,16 @@ const sortImport = sortConfig.rules['perfectionist/sort-imports'];
 sortImport[1]['internal-pattern'] = ['$*/**'];
 
 // Apply same parser options to JSX config when using React-Roblox
-jsxConfig.languageOptions = {
+reactConfig.languageOptions = {
 	...robloxConfig.languageOptions,
 };
 // Override if custom React-hooks modules use .ts extension, but since it may raise some false
 // positive for Matter-hooks, only jsx/tsx is checked by default.
-jsxConfig.files = ['**/*.{tsx,ts}'];
+reactConfig.files = ['**/*.{tsx,ts}'];
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
-	ignores,
+	ignoresConfig,
 
 	{
 		// Skip generated files and local scripts
@@ -71,7 +79,7 @@ export default [
 
 	baseConfig,
 	robloxConfig,
-	jsxConfig,
+	reactConfig,
 
 	// Turns off eslint rules that are better handled by TypeScript
 	tsOverridesConfig,

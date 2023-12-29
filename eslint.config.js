@@ -1,9 +1,9 @@
-import { baseConfig, ignores, importConfig, sortConfig, tsConfig, tsOverrideRules } from './dist/index.js';
+import { baseConfig, ignoresConfig, importConfig, sortConfig, tsConfig, tsOverrideRules } from './dist/index.js';
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
-	//
-	ignores,
+	// prettier-ignore
+	ignoresConfig,
 	baseConfig,
 
 	{

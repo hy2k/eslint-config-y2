@@ -1,3 +1,4 @@
+import type { FlatConfig as TSFlatConfig } from '@typescript-eslint/utils/ts-eslint';
 import type { Linter } from 'eslint';
 
 import eslint from '@eslint/js';
@@ -7,6 +8,7 @@ import importPlugin from 'eslint-plugin-import';
 import perfectionistPlugin from 'eslint-plugin-perfectionist';
 import reactHookPlugin from 'eslint-plugin-react-hooks';
 import robloxTsPlugin from 'eslint-plugin-roblox-ts';
+import tseslint from 'typescript-eslint';
 
 type FlatConfig = Linter.FlatConfig;
 type RulesRecord = Linter.RulesRecord;
@@ -75,36 +77,32 @@ const defaultParserOptions: Linter.ParserOptions = {
 	sourceType: 'module',
 };
 
-export const tsConfig: FlatConfig = {
+export const tsConfig: TSFlatConfig.Config = tseslint.config({
 	files: ['**/*.{ts,tsx}'],
 	languageOptions: {
-		// @ts-ignore
 		parser: typescriptParser,
 		parserOptions: {
 			...defaultParserOptions,
 		},
 	},
 	plugins: {
-		// @ts-ignore
 		'@typescript-eslint': typescriptPlugin,
 	},
 	rules: {
 		...tsRules,
 	},
-};
+})[0];
 
-export const robloxConfig: FlatConfig = {
+export const robloxConfig: TSFlatConfig.Config = tseslint.config({
 	files: ['**/*.{ts,tsx}'],
 	ignores: ['**/out/**'],
 	languageOptions: {
-		// @ts-ignore
 		parser: typescriptParser,
 		parserOptions: {
 			...defaultParserOptions,
 		},
 	},
 	plugins: {
-		// @ts-ignore
 		'@typescript-eslint': typescriptPlugin,
 		'roblox-ts': robloxTsPlugin,
 	},
@@ -120,7 +118,7 @@ export const robloxConfig: FlatConfig = {
 		// Luau can throw string errors, so this is fine
 		'@typescript-eslint/no-throw-literal': 'off',
 	},
-};
+})[0];
 
 export const tsOverridesConfig: FlatConfig = {
 	files: ['**/*.{ts,tsx}'],
@@ -129,12 +127,11 @@ export const tsOverridesConfig: FlatConfig = {
 	},
 };
 
-export const reactConfig: FlatConfig = {
+export const reactConfig: TSFlatConfig.Config = tseslint.config({
 	// Assume custom React-hooks modules use .ts extension to prevent false positive for
 	// Matter-hooks.
 	files: ['**/*.tsx'],
 	languageOptions: {
-		// @ts-ignore
 		parser: typescriptParser,
 		parserOptions: {
 			...defaultParserOptions,
@@ -146,7 +143,7 @@ export const reactConfig: FlatConfig = {
 	rules: {
 		...reactHookPlugin.configs.recommended.rules,
 	},
-};
+})[0];
 
 export const importConfig: FlatConfig = {
 	files: ['**/*.{ts,tsx}'],

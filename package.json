@@ -18,10 +18,10 @@
 		"prepublishOnly": "npm run lint"
 	},
 	"devDependencies": {
-		"@types/eslint": "^8.56.2",
-		"@types/node": "^20.11.17",
+		"@types/eslint": "^8.56.10",
+		"@types/node": "^20.14.2",
 		"eslint": "^8.56.0",
-		"prettier": "^3.2.5"
+		"prettier": "^3.3.2"
 	},
 	"peerDependencies": {
 		"eslint": "^8.56.0",
@@ -29,14 +29,14 @@
 	},
 	"dependencies": {
 		"@eslint/js": "^8.56.0",
-		"@typescript-eslint/eslint-plugin": "^7.0.1",
-		"@typescript-eslint/parser": "^7.0.1",
-		"@typescript-eslint/utils": "^7.0.1",
+		"@typescript-eslint/eslint-plugin": "^7.13.0",
+		"@typescript-eslint/parser": "^7.13.0",
+		"@typescript-eslint/utils": "^7.13.0",
 		"eslint-plugin-import": "^2.29.1",
-		"eslint-plugin-perfectionist": "^2.5.0",
-		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-perfectionist": "^2.11.0",
+		"eslint-plugin-react-hooks": "^4.6.2",
 		"eslint-plugin-roblox-ts": "^0.0.36",
-		"typescript-eslint": "^7.0.1"
+		"typescript-eslint": "^7.13.0"
 	},
 	"prettier": {
 		"printWidth": 120,

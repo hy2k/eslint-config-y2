@@ -6,9 +6,10 @@ import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import importPlugin from 'eslint-plugin-import';
 import perfectionistPlugin from 'eslint-plugin-perfectionist';
+import reactPlugin from 'eslint-plugin-react';
 import reactHookPlugin from 'eslint-plugin-react-hooks';
 import robloxTsPlugin from 'eslint-plugin-roblox-ts';
-import tseslint from 'typescript-eslint';
+import tsEslint from 'typescript-eslint';
 
 type FlatConfig = Linter.FlatConfig;
 type RulesRecord = Linter.RulesRecord;
@@ -77,7 +78,7 @@ const defaultParserOptions: Linter.ParserOptions = {
 	sourceType: 'module',
 };
 
-export const tsConfig: TSFlatConfig.Config = tseslint.config({
+export const tsConfig: TSFlatConfig.Config = tsEslint.config({
 	files: ['**/*.{ts,tsx}'],
 	languageOptions: {
 		parser: typescriptParser,
@@ -93,7 +94,7 @@ export const tsConfig: TSFlatConfig.Config = tseslint.config({
 	},
 })[0];
 
-export const robloxConfig: TSFlatConfig.Config = tseslint.config({
+export const robloxConfig: TSFlatConfig.Config = tsEslint.config({
 	files: ['**/*.{ts,tsx}'],
 	ignores: ['**/out/**'],
 	languageOptions: {
@@ -127,10 +128,8 @@ export const tsOverridesConfig: FlatConfig = {
 	},
 };
 
-export const reactConfig: TSFlatConfig.Config = tseslint.config({
-	// Assume custom React-hooks modules use .ts extension to prevent false positive for
-	// Matter-hooks.
-	files: ['**/*.tsx'],
+export const reactConfig: TSFlatConfig.Config = tsEslint.config({
+	files: ['**/*.jsx', '**/*.tsx'],
 	languageOptions: {
 		parser: typescriptParser,
 		parserOptions: {
@@ -138,10 +137,18 @@ export const reactConfig: TSFlatConfig.Config = tseslint.config({
 		},
 	},
 	plugins: {
+		react: reactPlugin,
 		'react-hooks': reactHookPlugin,
 	},
 	rules: {
+		...reactPlugin.configs.recommended.rules,
+		...reactPlugin.configs['jsx-runtime'].rules,
 		...reactHookPlugin.configs.recommended.rules,
+	},
+	settings: {
+		react: {
+			version: 'detect',
+		},
 	},
 })[0];
 

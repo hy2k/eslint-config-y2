@@ -154,6 +154,7 @@ export const reactConfig: TSFlatConfig.Config = tsEslint.config({
 
 export const importConfig: FlatConfig = {
 	files: ['**/*.{ts,tsx}'],
+	ignores: ['**/*.config.js', '**/*.config.ts'],
 	plugins: {
 		import: importPlugin,
 	},

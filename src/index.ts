@@ -54,6 +54,7 @@ export const tsRules: RulesRecord = {
 			prefer: 'type-imports',
 		},
 	],
+	'@typescript-eslint/explicit-function-return-type': 'error',
 	'@typescript-eslint/method-signature-style': ['warn', 'property'],
 	'@typescript-eslint/no-shadow': 'error',
 	'@typescript-eslint/no-unused-vars': [
@@ -62,6 +63,12 @@ export const tsRules: RulesRecord = {
 			args: 'all',
 			argsIgnorePattern: '^_',
 			varsIgnorePattern: '^_',
+		},
+	],
+	'@typescript-eslint/restrict-template-expressions': [
+		'error',
+		{
+			allowNumber: true,
 		},
 	],
 	'@typescript-eslint/switch-exhaustiveness-check': 'error',

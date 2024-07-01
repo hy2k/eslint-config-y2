@@ -15,7 +15,7 @@ type FlatConfig = Linter.FlatConfig;
 type RulesRecord = Linter.RulesRecord;
 
 export const ignoresConfig: FlatConfig = {
-	ignores: ['**/node_modules/**', '**/dist/**', '**/out/**', '**/.next/**', '/**/.wrangler/**'],
+	ignores: ['**/node_modules/**', '**/dist/**', '**/out/**', '**/.next/**', '**/.wrangler/**', '**/*.json'],
 };
 
 export const baseConfig: FlatConfig = {

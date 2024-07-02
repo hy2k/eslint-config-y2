@@ -123,6 +123,9 @@ export const robloxConfig: TSFlatConfig.Config = tsEslint.config({
 		// Roblox-ts does not allow this
 		'@typescript-eslint/ban-ts-comment': 'error',
 
+		// See: https://roblox-ts.com/docs/guides/callbacks-vs-methods
+		'@typescript-eslint/method-signature-style': 'off',
+
 		// Luau can throw string errors, so this is fine
 		'@typescript-eslint/no-throw-literal': 'off',
 	},

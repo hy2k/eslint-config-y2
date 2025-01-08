@@ -1,5 +1,8 @@
 # eslint-config-y2
 
+> [!IMPORTANT]
+> Use biome.
+
 Highly opinionated ESLint flat config for my TypeScript projects.
 
 ## Usage
